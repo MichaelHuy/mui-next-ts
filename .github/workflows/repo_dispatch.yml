@@ -52,9 +52,9 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.TOKEN_PS }}
-          branch: '${{ github.event.client_payload.branch }}'
+          branch: 'main'
           delete-branch: true
-          title: '[Example]bump for ${{ github.event.client_payload.commit_msg }}'
+          title: '[Example]bump for'
           body: |
             Update report
             - Updated with *today's* date
