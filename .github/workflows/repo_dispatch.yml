@@ -34,19 +34,15 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      # - name: Make changes to pull request
-      #   run: date +%s > report.txt
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.client_payload.branch }}
 
 
-      # - name: populate_env
-      #   run: |
-      #     # clean up the string
-      #     original='${{ github.event.client_payload.env.val }}'
-      #     fixedpath=$(echo $original|sed -r 's/([\$\.\*\/\[\\^])/\\\1/g')
+      # Must make change on pr
+      - name: Make changes to pull request
+        run: date +%s > report.txt
 
-      #     # rename the keyval inline
-      #     sed -i 's/${{ github.event.client_payload.env.key }}=.*/${{ github.event.client_payload.env.key }}='"$fixedpath"'/' .env
-      #   shell: bash
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
